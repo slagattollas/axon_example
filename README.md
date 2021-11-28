@@ -28,9 +28,9 @@ public void handle(ValidateCustomerPaymentCommand validateCustomerPaymentCommand
 public CustomerAggregate(CreateCustomerCommand createCustommerCommand) {
 ```
 
-**@EventSourcingHandler**: Esta anotación se utiliza para manejar un evento. Estas funciones se utlizan en los aggregadores para auto-actualizar su propio estado. También se pueden usar en servicios o sagas para ejecutar una axión u comando luego de recibir un evento específico.
+**@EventSourcingHandler**: Esta anotación se utiliza para manejar un evento. Estas funciones se utlizan en los agregadores para auto-actualizar su propio estado. También se pueden usar en servicios o sagas para ejecutar una axión u comando luego de recibir un evento específico.
 
-**Aggregador**
+**agregador**
 
 ```
 @EventHandler
@@ -64,7 +64,7 @@ Axon también nos promorciona gateways que podemos utilizar para emitir queries,
 commandGateway.send(COMANDO);
 ```
 
-**AggregateLifecycle**: Este nos permite cambiar el ciclo de vida de un aggregador y emitir un evento.
+**AggregateLifecycle**: Este nos permite cambiar el ciclo de vida de un agregador y emitir un evento.
 
 ```
 AggregateLifecycle.apply(new OrderCreatedEvent())
@@ -107,7 +107,7 @@ SagaLifecycle.associateWith('nuevo id');
 SagaLifecycle.end();
 ```
 
-En caso de usar el **associateWith**, debe de pasarse el id del aggregador al que va a ser referencia el proximo paso y evento a lanzarse. Luego dentro del eventHandler se define que propiedad de asociación se utilizará.
+En caso de usar el **associateWith**, debe de pasarse el id del agregador al que va a ser referencia el proximo paso y evento a lanzarse. Luego dentro del eventHandler se define que propiedad de asociación se utilizará.
 
 ```
 @SagaEventHandler(associationProperty = "orderId")
